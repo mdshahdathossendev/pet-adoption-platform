@@ -9,7 +9,7 @@ const DesNav = async() => {
     const session = await auth.api.getSession({
       headers: await headers(),
     });
-    console.log(session)
+   
     return (
         <div className='bg-white shadow'>
             <div className='flex justify-between mx-auto container  items-center py-2'>

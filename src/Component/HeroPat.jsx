@@ -84,9 +84,6 @@ const HeroPat = async() => {
               {/* Button */}
               <div className='flex  gap-2'>
                 <button className="w-full  bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-medium transition-all duration-300">
-                Adopt Now
-              </button>
-                <button className="w-full  bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-medium transition-all duration-300">
                <Link href={`/detels/${data._id}`}>View Detalis</Link>
               </button>
               </div>

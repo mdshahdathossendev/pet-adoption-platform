@@ -9,7 +9,13 @@ import {
   User,
   BadgeCheck,
 } from "lucide-react";
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import Listsubmitfrom from '@/Component/Listsubmitfrom';
+
 const page = async({params}) => {
+    
+
     const {id} =  await params
     const pet = await patDataDetels(id)
     return (
@@ -89,69 +95,7 @@ const page = async({params}) => {
           
         </div>
       </div>
-       <div className="bg-white rounded-2xl shadow-lg p-6 space-y-5 row-span-1">
-      
-      {/* Title */}
-      <h2 className="text-2xl font-bold text-gray-800">
-        Adoption Request
-      </h2>
-
-      {/* Pet Name (Read Only) */}
-      <div>
-        <label className="text-sm text-gray-500">Pet Name</label>
-        <input
-          type="text"
-          value={pet.petName}
-          readOnly
-          className="w-full mt-1 p-2 bg-gray-100 rounded-lg outline-none"
-        />
-      </div>
-
-      {/* User Name (Read Only) */}
-      <div>
-        <label className="text-sm text-gray-500">User Name</label>
-        <input
-          type="text"
-          value="Shahdat"
-          readOnly
-          className="w-full mt-1 p-2 bg-gray-100 rounded-lg outline-none"
-        />
-      </div>
-
-      {/* User Email (Read Only) */}
-      <div>
-        <label className="text-sm text-gray-500">User Email</label>
-        <input
-          type="email"
-          value="hmdshahdat501@gmail.com"
-          readOnly
-          className="w-full mt-1 p-2 bg-gray-100 rounded-lg outline-none"
-        />
-      </div>
-
-      {/* Pickup Date */}
-      <div>
-        <label className="text-sm text-gray-500">Pickup Date</label>
-        <input
-          type="date"
-          className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
-        />
-      </div>
-
-      {/* Message */}
-      <div>
-        <label className="text-sm text-gray-500">Message</label>
-        <textarea
-          placeholder="Write your message..."
-          className="w-full mt-1  border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"
-        />
-      </div>
-
-      {/* Button */}
-      <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-medium transition">
-        Adopt Now
-      </button>
-    </div>
+      <Listsubmitfrom pet = {pet}></Listsubmitfrom>
     </div>
     );
 };

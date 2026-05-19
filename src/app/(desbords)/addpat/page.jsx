@@ -23,6 +23,7 @@ const AddpatPage = () => {
     })
 
     const data = await req.json()
+    window.location.href = "/my-listing";
   }
     return (
        <div className='mr-30 mx-auto w-180 mt-8'>

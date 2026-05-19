@@ -9,10 +9,11 @@ export function Default({pet}) {
             method: 'DELETE'
         })
         const data = await res.json()
+        window.location.href = "/my-listing";
     }
   return (
     <AlertDialog>
-      <Button className="flex-1 flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl transition"><Trash2 size={20} /> Delete Project</Button>
+      <Button className="   bg-red-500 hover:bg-red-600 text-white py-3 rounded-sm w-full"><Trash2 size={20} /> Delete</Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
           <AlertDialog.Dialog className="sm:max-w-[400px]">

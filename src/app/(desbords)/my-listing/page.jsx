@@ -72,7 +72,7 @@ const page = async () => {
                 </p>
 
                 <div className="flex gap-2 mt-4">
-                  <UpdetPatModel />
+                  <UpdetPatModel pet={pet} />
                   <Default pet={pet} />
                 </div>
               </div>
