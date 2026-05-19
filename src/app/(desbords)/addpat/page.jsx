@@ -1,12 +1,15 @@
 'use client'
+import { authClient } from '@/lib/auth-client';
 import { CirclePlusFill } from '@gravity-ui/icons';
 import { Button, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+import { createAuthClient } from 'better-auth/react';
 
 
 
 import React from 'react';
 
 const AddpatPage = () => {
+  const { data: session, isPending } = authClient.useSession();
   const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -121,7 +124,7 @@ const AddpatPage = () => {
     <Label>Owner Email</Label>
     <Input
       className="bg-gray-200 rounded-sm p-2"
-      value="owner@example.com"
+      value={session?.user?.email}
     />
     <FieldError />
   </TextField>
