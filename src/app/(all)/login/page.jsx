@@ -15,11 +15,16 @@ const LoginPage = () => {
           callbackURL: "/",
         })
   };
+  const handelGoogle = async() => {
+      const data = await authClient.signIn.social({
+        provider: 'google'
+      });
+    };
     return (
          <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto mb-8 ">
             <h2 className="text-2xl text-center mx-auto font-bold">Welcome back!</h2>
             <p className="text-center mt-2 opacity-45 ">Sign in to contiune PetAdoption</p>
-            <Button className={'w-full mt-4 bg-gray-200 text-black rounded-sm'}><GeoPolygons></GeoPolygons>  Continue with Google</Button>
+            <Button onClick={handelGoogle} className={'w-full mt-4 bg-gray-200 text-black rounded-sm'}><GeoPolygons></GeoPolygons>  Continue with Google</Button>
             <p className="text-center mt-3">or sing in with email</p>
             <Form className="flex w-96 flex-col gap-4 mx-auto my-auto mt-6 " onSubmit={onSubmit}>
       <TextField

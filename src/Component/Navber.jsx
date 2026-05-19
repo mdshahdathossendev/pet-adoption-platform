@@ -1,15 +1,15 @@
 'use client'
-import { auth } from '@/lib/auth';
 import { authClient } from '@/lib/auth-client';
 import { ArrowRightArrowLeft, ArrowRightToSquare, CirclePlayFill, Firewall, HouseFill } from '@gravity-ui/icons';
-import { Button } from '@heroui/react';
+import { Button, Popover } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import ProfileCard from './ProfileCard';
 
 const Navber = () => {
-    const session = aut
-    console.log(session)
+   const { data: session, isPending } = authClient.useSession();
+   console.log(session?.user?.image)
    const handellogOut = async() => {
      await authClient.signOut({
   fetchOptions: {
@@ -34,7 +34,21 @@ const Navber = () => {
             </div>
             <div className="flex gap-4 items-center">
   {session ? (
-    <Button onClick={handellogOut} color="danger" className="bg-orange-500 text-white rounded-sm"  >Logout</Button>
+   <div className="flex items-center gap-4">
+     <Popover>
+        <Button className="w-full bg-none rounded-full" variant="none">
+          <Image className='rounded-full w-10 h-10 border-2 border-orange-600' src={session?.user?.image} alt='image' width={200} height={200}></Image>
+        </Button>
+        <Popover.Content placement="left">
+          <Popover.Dialog>
+            <Popover.Arrow />
+        
+            <ProfileCard></ProfileCard>
+          
+          </Popover.Dialog>
+        </Popover.Content>
+      </Popover>
+    </div>
   ) : (
     <>
       <Link href="/login" className="flex items-center gap-1">
@@ -42,8 +56,8 @@ const Navber = () => {
         Login
       </Link>
 
-      <Link href="/signup">
-        <Button className="bg-orange-500 text-white">
+      <Link href="/singUp">
+        <Button className="bg-orange-500 text-white rounded-sm">
           Get Started
         </Button>
       </Link>

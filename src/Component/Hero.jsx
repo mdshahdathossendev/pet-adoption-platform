@@ -1,6 +1,6 @@
 import { LogoStackOverflow } from '@gravity-ui/icons';
 import { Button } from '@heroui/react';
-import Image from 'next/image';
+import Image from 'next/image';     
 import React from 'react';
 
 const Hero = () => {
@@ -19,7 +19,7 @@ Give a rescued pet love, happiness, and a better life today.</p>
         </div>
              </div>
         <div>
-            <Image className='h-80 rounded-xl' src={'/assets/cat-8540772_1280.jpg'} width={600} height={600} alt='hero'></Image>
+            <Image className='h-80 rounded-full border-3 border-orange-500' src={'/assets/cat-8540772_1280.jpg'} width={600} height={600} alt='hero'></Image>
         </div>
           </div>
         </div>

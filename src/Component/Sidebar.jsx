@@ -8,7 +8,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const menu = [
-    { name: "My Requests", path: "/addpa" },
+    { name: "My Requests", path: "/desbord" },
     { name: "Add Pat", path: "/addpat" },
     { name: "My Listings", path: "/my-listing" },
   ];
