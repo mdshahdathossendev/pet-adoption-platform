@@ -1,16 +1,22 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import {Check, GeoPolygons} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import Link from "next/link";
 
 const LoginPage = () => {
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    const userData = Object.fromEntries(formData.entries());
+        const {data, error} = await authClient.signIn.email({
+          email: userData.email,
+          password: userData.password,
+          callbackURL: "/",
+        })
   };
     return (
-         <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto ">
+         <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto mb-8 ">
             <h2 className="text-2xl text-center mx-auto font-bold">Welcome back!</h2>
             <p className="text-center mt-2 opacity-45 ">Sign in to contiune PetAdoption</p>
             <Button className={'w-full mt-4 bg-gray-200 text-black rounded-sm'}><GeoPolygons></GeoPolygons>  Continue with Google</Button>

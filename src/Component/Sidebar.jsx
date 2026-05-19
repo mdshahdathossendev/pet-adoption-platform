@@ -10,7 +10,7 @@ export default function Sidebar() {
   const menu = [
     { name: "My Requests", path: "/addpa" },
     { name: "Add Pat", path: "/addpat" },
-    { name: "My Listings", path: "/profile" },
+    { name: "My Listings", path: "/my-listing" },
   ];
 
   return (

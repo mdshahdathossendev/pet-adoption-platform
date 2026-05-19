@@ -1,13 +1,31 @@
+'use client'
 import { CirclePlusFill } from '@gravity-ui/icons';
 import { Button, FieldError, Form, Input, Label, TextField } from '@heroui/react';
+
+
+
 import React from 'react';
 
 const AddpatPage = () => {
+  const onSubmit = async(e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
+    const req = await fetch('http://localhost:8000/allpat', {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(userData)
+    })
+
+    const data = await req.json()
+  }
     return (
        <div className='mr-30 mx-auto w-180 mt-8'>
         <p className='bg-orange-200 w-fit text-orange-700 font-semibold px-4 rounded-full mb-2 flex items-center gap-1 '><CirclePlusFill></CirclePlusFill> List a pad</p>
         <h1 className='text-3xl font-bold text-orange-400'>Add a Pet Listing</h1>
-        <Form className="flex flex-col gap-4 mx-auto my-auto mt-6 bg-white shadow-xl p-4 border-2 rounded-xl">
+        <Form onSubmit={onSubmit} className="flex flex-col gap-4 mx-auto my-auto mt-6 bg-white shadow-xl p-4 border-2 rounded-xl">
 
   {/* Pet Name */}
   <div className='flex gap-4 justify-between w-170 mx-auto'>

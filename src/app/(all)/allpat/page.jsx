@@ -1,20 +1,20 @@
+import React from 'react';
 import { patData } from '@/lib/data';
 import { Heart, MapPin, PawPrint, Syringe } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-
-const HeroPat = async() => {
+const page = async() => {
     const datas = await patData()
     return (
-        <div className='mt-10'>
-            <h2 className='text-center text-3xl font-bold'>Pets Available for <span className='text-orange-600'>Adoption</span></h2>
-            <p className='text-center mt-2'>These wonderful pet are whiting for their forever homeless. Will you be to one change thir lives?</p>
+        
+          <div className='mt-10 max-w-6xl mx-auto'>
+            <h2 className=' text-3xl font-bold'>Browse <span className='text-orange-600'>All Pets</span></h2>
+            <p className='  mt-2'>These wonderful pet are whiting for their forever homeless.</p>
         
         <div className='mt-8 grid grid-cols-3 gap-4  max-w-6xl mx-auto'>
             
             {
-                datas.slice(0, 6).map(data=>  <div
+                datas.map(data=>  <div
             key={data._id}
             className="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition-all duration-300 group"
           >
@@ -95,7 +95,8 @@ const HeroPat = async() => {
             }
         </div>
         </div>
+        
     );
 };
 
-export default HeroPat;
+export default page;

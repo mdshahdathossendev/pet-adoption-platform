@@ -1,16 +1,29 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import {Check, GeoPolygons} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import Link from "next/link";
+import { useState } from "react";
 
 const singUpPage = () => {
-    const onSubmit = (e) => {
+     const [password, setPassword] = useState("")
+
+    const onSubmit = async(e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    const userData = Object.fromEntries(formData.entries());
+    const {data, error} = await authClient.signUp.email({
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      image: userData.imageUrl,
+       
+
+    })
+    console.log(data, error)
   };
     return (
-         <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto ">
+         <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto mb-8 ">
             <h2 className="text-2xl text-center mx-auto font-bold">Create your account</h2>
             <p className="text-center mt-2 opacity-45 ">Start your adoption journey today</p>
             <Button className={'w-full mt-4 bg-gray-200 text-black rounded-sm'}><GeoPolygons></GeoPolygons>  Continue with Google</Button>
@@ -18,7 +31,7 @@ const singUpPage = () => {
             <Form className="flex w-96 flex-col gap-4 mx-auto my-auto mt-6 " onSubmit={onSubmit}>
 
   {/* Full Name */}
-  <TextField isRequired name="fullName" type="text">
+  <TextField isRequired name="name" type="text">
     <Label>Full Name</Label>
     <Input className="bg-gray-200 shadow-none rounded-sm" placeholder="Enter Your Name" />
     <FieldError />
@@ -49,48 +62,51 @@ const singUpPage = () => {
   </TextField>
 
   {/* Password */}
-  <TextField
-    isRequired
-    minLength={8}
-    name="password"
-    type="password"
-    validate={(value) => {
-      if (value.length < 8) {
-        return "Password must be at least 8 characters";
-      }
-      if (!/[A-Z]/.test(value)) {
-        return "Password must contain at least one uppercase letter";
-      }
-      if (!/[0-9]/.test(value)) {
-        return "Password must contain at least one number";
-      }
-      return null;
-    }}
-  >
-    <Label>Password</Label>
-    <Input className="bg-gray-200 shadow-none rounded-sm" placeholder="Enter your password" />
-    <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
-    <FieldError />
-  </TextField>
+   <TextField
+        isRequired
+        minLength={8}
+        name="password"
+      >
+        <Label>Password</Label>
 
-  {/* Confirm Password */}
-  <TextField
-    isRequired
-    name="confirmPassword"
-    type="password"
-    validate={(value, formData) => {
-      const password = formData?.get?.("password");
+        <Input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          className="bg-gray-200 shadow-none rounded-sm"
+          placeholder="Enter your password"
+        />
 
-      if (value !== password) {
-        return "Passwords do not match";
-      }
-      return null;
-    }}
-  >
-    <Label>Confirm Password</Label>
-    <Input className="bg-gray-200 shadow-none rounded-sm" placeholder="Re-enter your password" />
-    <FieldError />
-  </TextField>
+        <Description>
+          Must be at least 8 characters with 1 uppercase and 1 number
+        </Description>
+
+        <FieldError />
+      </TextField>
+
+      {/* Confirm Password */}
+      <TextField
+        isRequired
+        name="confirmPassword"
+        validate={(value) => {
+
+          if (value !== password) {
+            return "Passwords do not match";
+          }
+
+          return null;
+        }}
+      >
+        <Label>Confirm Password</Label>
+
+        <Input
+          type="password"
+          className="bg-gray-200 shadow-none rounded-sm"
+          placeholder="Re-enter your password"
+        />
+
+        <FieldError />
+      </TextField>
+
 
   {/* Submit */}
   <div>
@@ -105,5 +121,5 @@ const singUpPage = () => {
          </div>
     );
 };
-
+// hmdshahdat121@gmail.com
 export default singUpPage;
