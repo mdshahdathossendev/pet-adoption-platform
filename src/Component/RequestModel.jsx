@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Modal} from "@heroui/react";
 import { Rocket } from 'lucide-react';
+import { MdRequestPage } from 'react-icons/md';
 const RequestModel = async({pet}) => {
     const res = await fetch(`http://localhost:8000/listing/delts/${pet._id}`)
     const datas = await res.json()
@@ -8,7 +9,7 @@ const RequestModel = async({pet}) => {
     return (
         <div>
             <Modal>
-      <Button variant="secondary">Open Modal</Button>
+      <Button className={'w-full rounded-sm bg-orange-500 text-white'} variant="secondary"><MdRequestPage></MdRequestPage> Requests</Button>
       <Modal.Backdrop>
         <Modal.Container>
           <Modal.Dialog className="sm:max-w-[360px]">

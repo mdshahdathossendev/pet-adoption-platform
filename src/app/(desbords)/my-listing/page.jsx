@@ -7,6 +7,8 @@ import { Default } from "@/Component/DeletAlert";
 import UpdetPatModel from "@/Component/UpdetPatModel";
 import Link from "next/link";
 import RequestModel from "@/Component/RequestModel";
+import { Button } from "@heroui/react";
+import { View } from "lucide-react";
 
 const page = async () => {
   const session = await auth.api.getSession({
@@ -79,7 +81,7 @@ const page = async () => {
                 </div>
                 <div className="flex gap-2 mt-4">
                   <RequestModel pet={pet}></RequestModel>
-                  <Default pet={pet} />
+                  <Button className={'w-full rounded-sm bg-cyan-500'}><View></View> <Link href={`detels/${pet._id}`}>View</Link></Button>
                 </div>
                 </div>
               </div>

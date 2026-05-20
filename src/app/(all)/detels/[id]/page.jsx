@@ -14,10 +14,18 @@ import { headers } from 'next/headers';
 import Listsubmitfrom from '@/Component/Listsubmitfrom';
 
 const page = async({params}) => {
-    
-
     const {id} =  await params
-    const pet = await patDataDetels(id)
+    const tokenObj = await auth.api.getToken({
+        headers: await headers()
+    });
+    const token = tokenObj.token
+    console.log(token)
+    const res = await fetch(`http://localhost:8000/allpat/${id}`, {
+        headers:{
+         authorization: `Bearer ${token}`
+      } 
+  });
+  const pet = await res.json();
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-6 grid grid-cols-3 gir-row-4 gap-2 container mx-auto">
       

@@ -1,10 +1,22 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Sidebar() {
+    const handellogOut = async() => {
+         await authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+            toast.error('LogOut Success')
+          window.location.href='/login'
+        },
+      },
+    });
+}
   const pathname = usePathname();
 
   const menu = [
@@ -31,7 +43,7 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-      <Button variant="outline" className={'mt-75 w-full rounded-sm  mx-auto hover:bg-red-600 hover:text-white'}>LogOut</Button>
+      <Button onClick={handellogOut} variant="outline" className={'mt-75 w-full rounded-sm  mx-auto hover:bg-red-600 hover:text-white'}>LogOut</Button>
     </div>
   );
 }
