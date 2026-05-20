@@ -2,6 +2,7 @@
 
 import {AlertDialog, Button} from "@heroui/react";
 import { Trash2 } from "lucide-react";
+import { toast } from "react-toastify";
 
 export function Default({pet}) {
     const onDelete = async(userId) => {
@@ -9,6 +10,7 @@ export function Default({pet}) {
             method: 'DELETE'
         })
         const data = await res.json()
+        toast.error('Pat delete success')
         window.location.href = "/my-listing";
     }
   return (

@@ -6,6 +6,7 @@ import { patData } from "@/lib/data";
 import { Default } from "@/Component/DeletAlert";
 import UpdetPatModel from "@/Component/UpdetPatModel";
 import Link from "next/link";
+import RequestModel from "@/Component/RequestModel";
 
 const page = async () => {
   const session = await auth.api.getSession({
@@ -71,9 +72,15 @@ const page = async () => {
                   💰 ৳ {pet.adoptionFee}
                 </p>
 
-                <div className="flex gap-2 mt-4">
+                <div>
+                    <div className="flex gap-2 mt-4">
                   <UpdetPatModel pet={pet} />
                   <Default pet={pet} />
+                </div>
+                <div className="flex gap-2 mt-4">
+                  <RequestModel pet={pet}></RequestModel>
+                  <Default pet={pet} />
+                </div>
                 </div>
               </div>
             </div>

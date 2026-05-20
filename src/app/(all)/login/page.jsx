@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import {Check, GeoPolygons} from "@gravity-ui/icons";
 import {Button, Description, FieldError, Form, Input, Label, TextField} from "@heroui/react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
     const onSubmit = async(e) => {
@@ -14,11 +15,13 @@ const LoginPage = () => {
           password: userData.password,
           callbackURL: "/",
         })
+        toast.success('Login Sucessfully')
   };
   const handelGoogle = async() => {
       const data = await authClient.signIn.social({
         provider: 'google'
       });
+      toast.success('Login Sucessfully')
     };
     return (
          <div className="bg-white p-4 shadow-xl border-2 mt-16 rounded-xl w-fit mx-auto mb-8 ">

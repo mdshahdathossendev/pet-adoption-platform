@@ -5,12 +5,14 @@ import Link from "next/link";
 import { Button } from "@heroui/react";
 import { LayoutDashboard, LogOut } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 export default function ProfileCard() {
 
   const { data: session } = authClient.useSession();
 
   const handleLogout = async () => {
+    toast.error('Logout success')
     await authClient.signOut();
   };
 

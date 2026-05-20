@@ -2,6 +2,7 @@
 'use client'
 
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const Listsubmitfrom =  ({ pet }) => {
   const {data: session} = authClient.useSession();
@@ -13,6 +14,7 @@ const Listsubmitfrom =  ({ pet }) => {
     const data = Object.fromEntries(formData.entries());
     const listingData = {
         userId: user?.id,
+        deltsId:pet?._id,
         pikUpdate: data?.pickupDate,
         name: pet.petName,
         status: "Active"
@@ -27,7 +29,7 @@ const Listsubmitfrom =  ({ pet }) => {
 
     const result = await res.json();
     console.log( listingData);
-    
+    toast.success('Adopt success')
   };
 
   return (
@@ -75,8 +77,8 @@ const Listsubmitfrom =  ({ pet }) => {
 
       {/* Pickup Date */}
       <div>
-        <label className="text-sm text-gray-500">Pickup Date</label>
-        <input
+        <label  className="text-sm text-gray-500">Pickup Date</label>
+        <input required
           name="pickupDate"
           type="date"
           className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-orange-500 outline-none"

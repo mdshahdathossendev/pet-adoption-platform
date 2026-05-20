@@ -1,24 +1,80 @@
-import React from 'react';
-import { patData } from '@/lib/data';
-import { Heart, MapPin, PawPrint, Syringe } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-const page = async() => {
-    const datas = await patData()
-    return (
-        
-          <div className='mt-10 max-w-6xl mx-auto'>
-            <h2 className=' text-3xl font-bold'>Browse <span className='text-orange-600'>All Pets</span></h2>
-            <p className='  mt-2'>These wonderful pet are whiting for their forever homeless.</p>
-        
-        <div className='mt-8 grid grid-cols-3 gap-4  max-w-6xl mx-auto'>
-            
-            {
-                datas.map(data=>  <div
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { patData } from "@/lib/data";
+import { Heart, MapPin, PawPrint, Syringe } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
+const Page = () => {
+  const [datas, setDatas] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
+
+  // Load data
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await patData();
+      setDatas(res);
+    };
+
+    fetchData();
+  }, []);
+
+  // Filter logic
+  const filteredPets = datas.filter((item) => {
+    const matchSearch = item.petName
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchFilter =
+      filter === "All" ? true : item.species === filter;
+
+    return matchSearch && matchFilter;
+  });
+
+  return (
+    <div className="mt-10 max-w-6xl mx-auto">
+      {/* Title */}
+      <h2 className="text-3xl font-bold">
+        Browse <span className="text-orange-600">All Pets</span>
+      </h2>
+
+      <p className="mt-2 text-gray-600">
+        These wonderful pets are waiting for their forever homes.
+      </p>
+
+      {/* Search + Filter */}
+      <div className="flex flex-col md:flex-row gap-4 mt-6">
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search pets by name..."
+          className="border px-4 py-2 rounded-lg w-full outline-none focus:ring-2 focus:ring-orange-400"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+
+        {/* Filter */}
+        <select
+          className="border px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-orange-400"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Bird">Bird</option>
+        </select>
+      </div>
+
+      {/* Grid */}
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {filteredPets.map((data) => (
+          <div
             key={data._id}
             className="bg-white rounded-3xl overflow-hidden shadow hover:shadow-2xl transition-all duration-300 group"
           >
-            
             {/* Image */}
             <div className="relative overflow-hidden">
               <Image
@@ -37,7 +93,6 @@ const page = async() => {
 
             {/* Content */}
             <div className="p-6">
-              
               {/* Name */}
               <div className="flex items-center justify-between">
                 <div>
@@ -57,7 +112,6 @@ const page = async() => {
 
               {/* Info */}
               <div className="mt-5 space-y-3 text-sm text-gray-600">
-                
                 <div className="flex items-center gap-2">
                   <PawPrint className="w-4 h-4 text-orange-500" />
                   <span>
@@ -76,24 +130,18 @@ const page = async() => {
                 </div>
               </div>
 
-              {/* Description */}
-              <p className="text-gray-500 text-sm mt-5 leading-6">
-               
-              </p>
-
               {/* Button */}
-              <div className='flex  gap-2'>
-                <button className="w-full  bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-medium transition-all duration-300">
-               <Link href={`/detels/${data._id}`}>View Detalis</Link>
-              </button>
+              <div className="flex gap-2 mt-5">
+                <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-medium transition-all duration-300">
+                  <Link href={`/detels/${data._id}`}>View Details</Link>
+                </button>
               </div>
             </div>
-          </div>)
-            }
-        </div>
-        </div>
-        
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default page;
+export default Page;

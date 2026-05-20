@@ -7,6 +7,7 @@ import { createAuthClient } from 'better-auth/react';
 
 
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const AddpatPage = () => {
   const { data: session, isPending } = authClient.useSession();
@@ -23,6 +24,7 @@ const AddpatPage = () => {
     })
 
     const data = await req.json()
+    toast.success('Pat add successfully')
     window.location.href = "/my-listing";
   }
     return (

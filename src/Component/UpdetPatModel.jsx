@@ -13,6 +13,7 @@ import {
 
 import { Edit } from "lucide-react";
 import { router } from "better-auth/api";
+import { toast } from "react-toastify";
 
 const UpdetPatModel = ({ pet }) => {
     const onSubmit = async(e) => {
@@ -27,6 +28,8 @@ const UpdetPatModel = ({ pet }) => {
       body: JSON.stringify(userData)
     });
     const data = await req.json()
+        toast.success('Pat updeat success')
+                window.location.href = "/my-listing";
   }
   return (
     <Modal>
