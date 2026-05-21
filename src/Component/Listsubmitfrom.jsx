@@ -19,7 +19,7 @@ const Listsubmitfrom =  ({ pet }) => {
         name: pet.petName,
         status: "Active"
     }
-    const res = await fetch("http://localhost:8000/listing", {
+    const res = await fetch("https://pet-server-nu.vercel.app/listing", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

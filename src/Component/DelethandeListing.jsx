@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const DelethandeListing = ({id}) => {
      const handelDelte = async(id)=>{
-                const res = await fetch(`http://localhost:8000/listing/${id}`, {
+                const res = await fetch(`https://pet-server-nu.vercel.app/listing/${id}`, {
                     method: 'DELETE'
                 })
                 toast.error('Delete pat success');

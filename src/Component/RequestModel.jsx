@@ -3,7 +3,7 @@ import {Button, Modal} from "@heroui/react";
 import { Rocket } from 'lucide-react';
 import { MdRequestPage } from 'react-icons/md';
 const RequestModel = async({pet}) => {
-    const res = await fetch(`http://localhost:8000/listing/delts/${pet._id}`)
+    const res = await fetch(`https://pet-server-nu.vercel.app/listing/delts/${pet._id}`)
     const datas = await res.json()
     console.log(datas)
     return (
@@ -21,9 +21,7 @@ const RequestModel = async({pet}) => {
               <Modal.Heading></Modal.Heading>
             </Modal.Header>
             <Modal.Body>
-              {
-                datas.map(data=> <p key={data._id}>{data.name}</p>)
-              }
+             
             </Modal.Body>
             <Modal.Footer>
               <Button className="w-full" slot="close">

@@ -20,7 +20,7 @@ const UpdetPatModel = ({ pet }) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-    const req = await fetch(`http://localhost:8000/allpat/${pet._id}`, {
+    const req = await fetch(`https://pet-server-nu.vercel.app/allpat/${pet._id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type' : 'application/json'

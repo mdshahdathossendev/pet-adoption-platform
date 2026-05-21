@@ -18,5 +18,5 @@ export async function proxy(request) {
 }
 
 export const config = {
-    matcher: ['/detels/:path*', '/desbord', '/addpat', 'allpat', 'my-listing'],
+    matcher: ['/detels/:path*', '/desbord', '/addpat', '/my-listing'],
 }

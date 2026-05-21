@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 export function Default({pet}) {
     const onDelete = async(userId) => {
-        const res = await fetch(`http://localhost:8000/allpat/${userId}`, {
+        const res = await fetch(`https://pet-server-nu.vercel.app/allpat/${userId}`, {
             method: 'DELETE'
         })
         const data = await res.json()

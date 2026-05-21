@@ -8,10 +8,12 @@ import {
   PawPrint,
   User,
   BadgeCheck,
+  ArrowBigLeftDashIcon,
 } from "lucide-react";
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Listsubmitfrom from '@/Component/Listsubmitfrom';
+import Link from 'next/link';
 
 const page = async({params}) => {
     const {id} =  await params
@@ -20,7 +22,7 @@ const page = async({params}) => {
     });
     const token = tokenObj.token
     console.log(token)
-    const res = await fetch(`http://localhost:8000/allpat/${id}`, {
+    const res = await fetch(`https://pet-server-nu.vercel.app/allpat/${id}`, {
         headers:{
          authorization: `Bearer ${token}`
       } 
@@ -28,10 +30,10 @@ const page = async({params}) => {
   const pet = await res.json();
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-6 grid grid-cols-3 gir-row-4 gap-2 container mx-auto">
-      
       {/* Container */}
+       <Link href={'/'}><p className='flex items-center'><ArrowBigLeftDashIcon></ArrowBigLeftDashIcon> Back to home</p></Link>
       <div className=" col-span-2 row-span-2  max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden  lg:grid-cols-2">
-        
+       
         {/* Image Section */}
         <div className="relative">
           <Image

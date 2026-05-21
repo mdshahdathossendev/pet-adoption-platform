@@ -23,8 +23,12 @@ const Navber = () => {
         <div className='bg-white shadow'>
             <div className='flex justify-between mx-auto container  items-center py-2'>
             <div>
-                <Image src='/assets/ChatGPT Image May 17, 2026, 09_11_08 PM.png' width={120} height={200} alt='logo'></Image>
-
+               <Image
+        src="/assets/ChatGPT Image May 17, 2026, 09_11_08 PM.png"
+        width={120}
+        height={200}
+        alt="logo"
+      />
             </div>
             <div>
                 <ul className='flex gap-8'>
