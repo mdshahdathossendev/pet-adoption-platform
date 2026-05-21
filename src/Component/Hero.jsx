@@ -23,8 +23,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-gray-600 text-base sm:text-lg">
-            Find loving pets waiting for a caring forever home.
-            Browse adorable cats and dogs ready to join your family.
+            Find loving pets waiting for a caring forever home. <br />
+            Browse adorable cats and dogs ready to join your family. <br />
             Give a rescued pet love, happiness, and a better life today.
           </p>
 
