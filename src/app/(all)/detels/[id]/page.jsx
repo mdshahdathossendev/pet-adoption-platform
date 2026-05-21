@@ -31,7 +31,6 @@ const page = async({params}) => {
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-4 gap-4 container mx-auto">
       {/* Container */}
-       <Link href={'/'}><p className='flex items-center'><ArrowBigLeftDashIcon></ArrowBigLeftDashIcon> Back to home</p></Link>
       <div className=" col-span-2 row-span-2  max-w-6xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden  lg:grid-cols-2">
        
         {/* Image Section */}
