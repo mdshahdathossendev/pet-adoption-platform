@@ -11,7 +11,7 @@ const HeroPat = async() => {
             <h2 className='text-center text-3xl font-bold'>Pets Available for <span className='text-orange-600'>Adoption</span></h2>
             <p className='text-center mt-2'>These wonderful pet are whiting for their forever homeless. Will you be to one change thir lives?</p>
         
-        <div className='mt-8 grid grid-cols-3 gap-4  max-w-6xl mx-auto'>
+        <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4  max-w-6xl mx-auto'>
             
             {
                 datas.slice(0, 6).map(data=>  <div
