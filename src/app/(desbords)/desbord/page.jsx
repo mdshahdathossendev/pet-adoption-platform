@@ -12,7 +12,7 @@ const page = async() => {
          });
         const user = session?.user;
         const id = user?.id
-        const res = await fetch(`https://pet-server-nu.vercel.app/allpat/user/${id}`)
+        const res = await fetch(`https://pet-server-nu.vercel.app/listing/user/${id}`)
         const datas = await res.json();
     return (
         <div className='mx-auto container ml-75'>
