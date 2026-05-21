@@ -17,7 +17,7 @@ const Hero = () => {
           </Button>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            Connecting Loving{' '}
+            Connecting Loving{' '} <br />
             <span className="text-orange-500">Homes with Happy</span>{' '}
             Pets
           </h1>
