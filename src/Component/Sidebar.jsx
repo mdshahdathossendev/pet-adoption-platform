@@ -75,7 +75,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <div
         className={`
-          fixed top-0 left-0 z-50
+          fixed top-0 left-0
           h-screen w-72
           bg-white/90 backdrop-blur-lg
           border-r border-gray-200
@@ -93,7 +93,7 @@ export default function Sidebar() {
         {/* Logo */}
         <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-orange-500">
+            <h1 className="text-2xl font-bold text-orange-500 mt-8">
               Pet Dashboard
             </h1>
 
