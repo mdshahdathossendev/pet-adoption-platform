@@ -11,7 +11,7 @@ const DesNav = async() => {
     });
    
     return (
-        <div className='bg-white shadow'>
+        <div className='bg-white shadow z-100'>
             <div className='flex justify-between mx-auto container  items-center py-2'>
             <div className=''>
                 <Image className='h-5 hidden lg:block' src='/assets/ChatGPT Image May 17, 2026, 09_11_08 PM.png' width={130} height={180} alt='logo'></Image>

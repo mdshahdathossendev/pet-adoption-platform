@@ -51,7 +51,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
+    
       <button
         onClick={() => setOpen(!open)}
         className="
@@ -64,7 +64,7 @@ export default function Sidebar() {
         {open ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Overlay */}
+     
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -72,7 +72,7 @@ export default function Sidebar() {
         />
       )}
 
-      {/* Sidebar */}
+    
       <div
         className={`
           fixed top-0 left-0 z-50
@@ -91,7 +91,7 @@ export default function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between">
+        <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between mt-4">
           <div>
             <h1 className="text-2xl font-bold text-orange-500">
               Pet Dashboard
