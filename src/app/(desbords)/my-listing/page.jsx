@@ -53,7 +53,6 @@ const page = async () => {
         <>
           {/* Heading */}
           <div className="mb-8">
-            <Stats pat = {pat}></Stats>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
               My Pet Listings
             </h1>
