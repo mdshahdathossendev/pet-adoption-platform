@@ -34,7 +34,7 @@ const page = async () => {
       {/* Empty State */}
       {pets.length === 0 ? (
         <div className="flex flex-col items-center justify-center min-h-[70vh] text-center">
-          <Stats pat = {pat}></Stats>
+          
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-700">
             No Pet Added In Your Listing 🐾
           </h2>
@@ -53,6 +53,7 @@ const page = async () => {
         <>
           {/* Heading */}
           <div className="mb-8">
+            <Stats pat = {pat}></Stats>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
               My Pet Listings
             </h1>
