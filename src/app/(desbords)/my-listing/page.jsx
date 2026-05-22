@@ -22,7 +22,7 @@ const page = async () => {
   );
 
   return (
-    <div className="mx-auto ml-72">
+    <div className="mx-auto ml-0  lg:ml-72">
 
       {/* ✅ NO DATA UI */}
       {pets.length === 0 ? (
