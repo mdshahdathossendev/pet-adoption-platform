@@ -37,7 +37,7 @@ const AddpatPage = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-2">
+    <div className="max-w-7xl mx-auto px-4 sm:px-2 lg:px-2">
       {/* Top Text */}
       <p className="bg-orange-200 w-fit text-orange-700 font-semibold px-4 py-1 rounded-full mb-3 flex items-center gap-2 text-sm">
         <CirclePlusFill />

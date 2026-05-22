@@ -22,7 +22,7 @@ const page = async () => {
   );
 
   return (
-    <div className="mx-auto ml-0  lg:ml-72">
+    <div className="mx-auto ml-0   lg:ml-75">
 
       {/* ✅ NO DATA UI */}
       {pets.length === 0 ? (
@@ -43,7 +43,7 @@ const page = async () => {
       ) : (
 
         /* ✅ PET LIST */
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid mx-auto grid-cols-1 md:grid-cols-3 gap-6">
           {pets.map((pet) => (
             <div
               key={pet._id}
