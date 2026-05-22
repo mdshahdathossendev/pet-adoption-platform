@@ -7,16 +7,17 @@ import { usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function Sidebar() {
-    const handellogOut = async() => {
-         await authClient.signOut({
+  const handellogOut = async () => {
+    await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-            toast.error('LogOut Success')
-          window.location.href='/login'
+          toast.error("LogOut Success");
+          window.location.href = "/login";
         },
       },
     });
-}
+  };
+
   const pathname = usePathname();
 
   const menu = [
@@ -26,16 +27,35 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="h-screen w-64 bg-white shadow-xl text-black border-r-2 fixed left-0 top-0 mt-13">
-      <ul className="mt-4 space-y-2 px-2">
+    <div
+      className="
+        w-full md:w-64
+        bg-white shadow-xl text-black border-r-2
+        md:fixed left-0 top-0
+        md:h-screen
+        mt-0 md:mt-13
+        z-50
+      "
+    >
+      <ul
+        className="
+          flex md:flex-col
+          overflow-x-auto md:overflow-visible
+          gap-2
+          mt-4
+          px-2
+          py-2
+          md:space-y-2
+        "
+      >
         {menu.map((item) => (
-          <li key={item.path}>
+          <li key={item.path} className="min-w-fit">
             <Link
               href={item.path}
-              className={`block p-2 rounded transition ${
+              className={`block px-4 py-2 rounded transition whitespace-nowrap ${
                 pathname === item.path
                   ? "bg-orange-500 text-white"
-                  : "hover:bg-gray-700"
+                  : "hover:bg-gray-200"
               }`}
             >
               {item.name}
@@ -43,7 +63,16 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
-      <Button onClick={handellogOut} variant="outline" className={'mt-75 w-full rounded-sm  mx-auto hover:bg-red-600 hover:text-white'}>LogOut</Button>
+
+      <div className="p-2 md:absolute md:bottom-4 md:w-full">
+        <Button
+          onClick={handellogOut}
+          variant="outline"
+          className="w-full rounded-sm hover:bg-red-600 hover:text-white"
+        >
+          LogOut
+        </Button>
+      </div>
     </div>
   );
-} 
+}
