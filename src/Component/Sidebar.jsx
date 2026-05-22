@@ -5,13 +5,14 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { toast } from "react-toastify";
+import { LayoutDashboard, PlusCircle, List, LogOut } from "lucide-react";
 
 export default function Sidebar() {
   const handellogOut = async () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          toast.error("LogOut Success");
+          toast.success("Logout Success");
           window.location.href = "/login";
         },
       },
@@ -21,56 +22,99 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const menu = [
-    { name: "My Requests", path: "/desbord" },
-    { name: "Add Pat", path: "/addpat" },
-    { name: "My Listings", path: "/my-listing" },
+    {
+      name: "My Requests",
+      path: "/desbord",
+      icon: <LayoutDashboard size={18} />,
+    },
+    {
+      name: "Add Pet",
+      path: "/addpat",
+      icon: <PlusCircle size={18} />,
+    },
+    {
+      name: "My Listings",
+      path: "/my-listing",
+      icon: <List size={18} />,
+    },
   ];
 
   return (
     <div
       className="
-        w-full md:w-64
-        bg-white shadow-xl text-black border-r-2
-        md:fixed left-0 top-0
+        w-full md:w-72
+        bg-white/90 backdrop-blur-lg
+        border-r border-gray-200
+        shadow-2xl
         md:h-screen
-        mt-0 md:mt-13
+        md:fixed left-0 top-0
         z-50
+        flex flex-col
       "
     >
+      {/* Logo */}
+      <div className="px-6 py-5 border-b border-gray-200">
+        <h1 className="text-2xl font-bold text-orange-500">
+          Pet Dashboard
+        </h1>
+        <p className="text-sm text-gray-500 mt-1">
+          Manage your pet listings
+        </p>
+      </div>
+
+      {/* Menu */}
       <ul
         className="
           flex md:flex-col
           overflow-x-auto md:overflow-visible
-          gap-2
-          mt-4
-          px-2
-          py-2
-          md:space-y-2
+          gap-3
+          p-4
+          md:flex-1
         "
       >
         {menu.map((item) => (
           <li key={item.path} className="min-w-fit">
             <Link
               href={item.path}
-              className={`block px-4 py-2 rounded transition whitespace-nowrap ${
-                pathname === item.path
-                  ? "bg-orange-500 text-white"
-                  : "hover:bg-gray-200"
-              }`}
+              className={`
+                flex items-center gap-3
+                px-5 py-3
+                rounded-2xl
+                font-medium
+                transition-all duration-300
+                whitespace-nowrap
+                ${
+                  pathname === item.path
+                    ? "bg-orange-500 text-white shadow-lg scale-[1.02]"
+                    : "text-gray-700 hover:bg-orange-100 hover:text-orange-600"
+                }
+              `}
             >
+              {item.icon}
               {item.name}
             </Link>
           </li>
         ))}
       </ul>
 
-      <div className="p-2 md:absolute md:bottom-4 md:w-full">
+      {/* Logout Button */}
+      <div className="p-4 border-t border-gray-200">
         <Button
           onClick={handellogOut}
-          variant="outline"
-          className="w-full rounded-sm hover:bg-red-600 hover:text-white"
+          className="
+            w-full
+            bg-red-500
+            hover:bg-red-600
+            text-white
+            rounded-2xl
+            py-6
+            text-base
+            font-semibold
+            transition-all duration-300
+          "
         >
-          LogOut
+          <LogOut size={18} />
+          Logout
         </Button>
       </div>
     </div>
