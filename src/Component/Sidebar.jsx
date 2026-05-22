@@ -55,7 +55,7 @@ export default function Sidebar() {
       <button
         onClick={() => setOpen(!open)}
         className="
-          fixed top-15 left-4 z-[100]
+          fixed top-2 left-4 z-[100]
           bg-orange-500 text-white
           p-2 rounded-xl shadow-lg
           md:hidden
