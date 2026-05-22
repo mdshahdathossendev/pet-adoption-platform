@@ -91,7 +91,7 @@ export default function Sidebar() {
         `}
       >
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between mt-4">
+        <div className="px-6 py-5 border-b border-gray-200 flex items-center justify-between mt-7">
           <div>
             <h1 className="text-2xl font-bold text-orange-500">
               Pet Dashboard
