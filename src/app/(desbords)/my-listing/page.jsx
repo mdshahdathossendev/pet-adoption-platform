@@ -45,7 +45,7 @@ const page = async () => {
 
           <Link href={"/addpat"}>
             <button className="mt-5 px-5 py-3 bg-orange-500 hover:bg-orange-600 transition text-white rounded-xl shadow-md">
-              Add Your First Pet
+              Add Your First Pete
             </button>
           </Link>
         </div>
