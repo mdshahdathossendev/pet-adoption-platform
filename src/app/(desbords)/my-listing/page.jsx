@@ -9,6 +9,7 @@ import Link from "next/link";
 import RequestModel from "@/Component/RequestModel";
 import { Button } from "@heroui/react";
 import { View } from "lucide-react";
+import Stats from "@/Component/Stats";
 
 const page = async () => {
   const session = await auth.api.getSession({
@@ -33,6 +34,7 @@ const page = async () => {
       {/* Empty State */}
       {pets.length === 0 ? (
         <div className="flex flex-col items-center justify-center min-h-[70vh] text-center">
+          <Stats pat = {pat}></Stats>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-700">
             No Pet Added In Your Listing 🐾
           </h2>
